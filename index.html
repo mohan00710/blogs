@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog</title>
+
+  <!-- Inter font (self-hosted fallback via system fonts if offline) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="shell">
+
+    <!-- ── Header ── -->
+    <header>
+      <a href="index.html" class="logo">Blog</a>
+      <nav>
+        <a href="index.html">Posts</a>
+        <a href="#">About</a>
+      </nav>
+    </header>
+
+    <!-- ── Post List (populated by JS) ── -->
+    <main>
+      <ul class="post-list" id="post-list">
+        <li class="state-msg" id="loading-msg">Loading posts…</li>
+      </ul>
+    </main>
+
+    <!-- ── Footer ── -->
+    <footer>
+      &copy; 2026 Blog. All rights reserved.
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

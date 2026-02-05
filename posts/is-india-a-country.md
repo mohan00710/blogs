@@ -1,3 +1,9 @@
+---
+title: Is India A Country
+date: 2026-02-05
+excerpt: Just a thought about how India has to be Viewed IMO !
+---
+
 # Is India a country?
 
 ## The answer is: it is—and it isn’t.

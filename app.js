@@ -15,7 +15,8 @@
 (function () {
   "use strict";
 
-  const listEl = document.getElementById("post-list");
+  const listEl  = document.getElementById("post-list");
+  const bytesEl = document.getElementById("bytes-list");
 
   function formatDate(iso) {
     if (!iso) return "";
@@ -27,6 +28,7 @@
     });
   }
 
+  /* ── Posts ─────────────────────────────────────────── */
   async function loadPosts() {
     try {
       const res = await fetch("posts.json");
@@ -38,7 +40,6 @@
         return;
       }
 
-      // Sort newest first
       posts.sort((a, b) => (b.date > a.date ? 1 : -1));
 
       listEl.innerHTML = posts
@@ -58,5 +59,35 @@
     }
   }
 
+  /* ── Bytes ─────────────────────────────────────────── */
+  async function loadBytes() {
+    try {
+      const res = await fetch("bytes.json");
+      if (!res.ok) throw new Error("bytes.json not found");
+      const bytes = await res.json();
+
+      if (!bytes.length) {
+        bytesEl.innerHTML = '<p class="state-msg">Nothing yet.</p>';
+        return;
+      }
+
+      bytes.sort((a, b) => (b.date > a.date ? 1 : -1));
+
+      bytesEl.innerHTML = bytes
+        .map(
+          (b) => `
+            <div class="byte-item">
+              <div class="post-meta">${formatDate(b.date)}</div>
+              <p>${b.text}</p>
+            </div>`
+        )
+        .join("");
+    } catch (err) {
+      bytesEl.innerHTML = `<p class="state-msg">Failed to load bytes.<br><small>${err.message}</small></p>`;
+    }
+  }
+
+  // Load both in parallel
   loadPosts();
+  loadBytes();
 })();

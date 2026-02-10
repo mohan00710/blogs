@@ -35,8 +35,27 @@ a {
 
 /* ─── Layout Shell ──────────────────────────────────── */
 .shell {
-  max-width: var(--max-w);
+  max-width: 1080px;
   margin: 0 auto;
+}
+
+/* single-column pages (post.html) keep the narrow width */
+.shell--narrow {
+  max-width: var(--max-w);
+}
+
+/* ─── Two-column grid (index only) ──────────────────── */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.content-grid main {
+  max-width: var(--max-w);
+  justify-self: center;
+  width: 100%;
 }
 
 /* ─── Header / Nav ──────────────────────────────────── */
@@ -253,6 +272,74 @@ nav a:hover {
   border-bottom-color: var(--text);
 }
 
+/* ─── Bytes Sidebar ─────────────────────────────────── */
+.bytes-section {
+  position: sticky;
+  top: 2rem;
+  max-height: calc(100vh - 4rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.bytes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.25rem;
+  flex-shrink: 0;
+}
+
+.bytes-list {
+  overflow-y: auto;
+  flex: 1;
+  /* hide scrollbar visually but keep it functional */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.bytes-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.bytes-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.bytes-list::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+.bytes-header h3 {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bytes-header span {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.byte-item {
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.byte-item .post-meta {
+  font-size: 0.72rem;
+  margin-bottom: 0.35rem;
+}
+
+.byte-item p {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+
 /* ─── Footer ────────────────────────────────────────── */
 footer {
   margin-top: 4rem;
@@ -263,6 +350,28 @@ footer {
 }
 
 /* ─── Responsive ────────────────────────────────────── */
+@media (max-width: 600px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .content-grid main {
+    justify-self: stretch;
+    max-width: 100%;
+  }
+
+  .bytes-section {
+    position: static;
+    max-height: 300px;
+    order: 1;
+  }
+
+  main {
+    order: 0;
+  }
+}
+
 @media (max-width: 480px) {
   header {
     padding-top: 1.5rem;

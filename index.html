@@ -24,12 +24,28 @@
       </nav>
     </header>
 
-    <!-- ── Post List (populated by JS) ── -->
-    <main>
-      <ul class="post-list" id="post-list">
-        <li class="state-msg" id="loading-msg">Loading posts…</li>
-      </ul>
-    </main>
+    <!-- ── Two-column layout ── -->
+    <div class="content-grid">
+
+      <!-- Left – Post List -->
+      <main>
+        <ul class="post-list" id="post-list">
+          <li class="state-msg">Loading posts…</li>
+        </ul>
+      </main>
+
+      <!-- Right – Bytes Feed -->
+      <aside class="bytes-section">
+        <div class="bytes-header">
+          <h3>Bytes</h3>
+          <span>quick thoughts</span>
+        </div>
+        <div class="bytes-list" id="bytes-list">
+          <p class="state-msg">Loading…</p>
+        </div>
+      </aside>
+
+    </div>
 
     <!-- ── Footer ── -->
     <footer>

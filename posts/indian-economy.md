@@ -1,3 +1,11 @@
+---
+title: India is not poor , its just the Economics works different
+date: 2026-02-12
+excerpt: Why india will always be viewed as a poor country !
+---
+
+
+
 # India is not poor , its just the Economics works different 
 
 
